@@ -10,6 +10,8 @@ test('Search product and add to cart if available in stock', async ({ page }) =>
 
   await page.goto('https://www.fravega.com/');
   
+  await expect(zipCode.saveButton).toBeDisabled();
+
   await zipCode.enterPostalCode(ZIP_CODES[0].zipCode);
   
 });
