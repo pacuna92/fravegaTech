@@ -8,7 +8,7 @@ test('Search product and add to cart if available in stock', async ({ page }) =>
   
   const zipCode = new ZipCodePopUp(page);
 
-  await page.goto('https://www.fravega.com/');
+  await page.goto(`${process.env.BASE_URL}`);
   
   await expect(zipCode.saveButton).toBeDisabled();
 
