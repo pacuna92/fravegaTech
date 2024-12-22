@@ -1,10 +1,12 @@
 import { test, expect } from '@playwright/test';
-import ZipCodePopUp from '../pages/ZipCode';
+import ZipCodePopUp from '../pages/ZipCodePage';
 import { PRODUCT, URLS } from '../fixtures/products';
 import { ZIP_CODES } from '../fixtures/zipCode';
-import ProductPage from '../pages/ProductSearchResult';
+import ProductPage from '../pages/ProductSearchResultPage';
 import HomePage from '../pages/HomePage';
 import dotenv from 'dotenv';
+import ProductSelectedPage from '../pages/ProductSelectedPage';
+import CartPage from '../pages/CartPage';
 dotenv.config();
 
 test(`Search product: ${PRODUCT.title} and add to cart if available in stock`, async ({ page }) => {
@@ -12,6 +14,8 @@ test(`Search product: ${PRODUCT.title} and add to cart if available in stock`, a
   const zipCode = new ZipCodePopUp(page);
   const homePage = new HomePage(page);
   const productPage = new ProductPage(page);
+  const productSelected = new ProductSelectedPage(page);
+  const cartPage = new CartPage(page)
 
   if (!process.env.BASE_URL) {
     throw new Error('BASE_URL is not defined in the environment variables');
@@ -42,5 +46,19 @@ test(`Search product: ${PRODUCT.title} and add to cart if available in stock`, a
 
   await productPage.validateUrlChange(URLS[0].productSelected!)
 
+  await expect(productSelected.addToCartButton).toBeEnabled();
+
+  await productSelected.addProductToCart();
+
+  await expect(productSelected.productAdded).toBeVisible();
+
+  await homePage.goToCart();
+
+  await productPage.validateUrlChange(URLS[0].previewCart!);
+
+  const PRODUCT_ADDED = await cartPage.validateProductAdded();
+
+  expect(PRODUCT_ADDED).toBe(PRODUCT.slug);
+  
 });
 

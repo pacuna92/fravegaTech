@@ -16,6 +16,14 @@ class HomePage {
         return this.page.locator('button[type="submit"].sc-iEXKAA');
     }
 
+    get cartButton() {
+        return this.page.locator('[data-test-id="button-cart"]');
+    }
+
+    get linkGoToCartButton() {
+        return this.page.locator('[data-test-id="link-go-to-cart"]')
+    }
+
     // Methods
     async searchProduct(productName: string) {
         await this.searchbox.fill('');
@@ -24,8 +32,13 @@ class HomePage {
     }
 
     async validateZipCode(zipCode: string) {
-        const elemento = this.page.locator('b.sc-fyVfxW.jkfzEe', { hasText: `(${zipCode})` })
-        return elemento.textContent();
+        const ZC_LABEL = this.page.locator('b.sc-fyVfxW.jkfzEe', { hasText: `(${zipCode})` })
+        return ZC_LABEL.textContent();
+    }
+
+    async goToCart(){
+        await this.cartButton.click({timeout: 5000});
+        await this.linkGoToCartButton.click();
     }
 }
 

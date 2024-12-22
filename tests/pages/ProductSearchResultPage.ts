@@ -33,7 +33,7 @@ class ProductPage {
         await this.page.waitForURL(expectedUrl, { timeout: 20000 });
     }
 
-    async clickSecondProduct() {
+    async clickSecondProduct(): Promise<void> {
         const SECOND_PRODUCT = await this.getSecondProduct();
         await SECOND_PRODUCT.click();
     }

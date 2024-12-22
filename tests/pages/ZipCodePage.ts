@@ -20,11 +20,11 @@ class ZipCodePopUp {
     }
 
     get modal() {
-        return this.page.locator('data-test-id=geo-modal-wrapper'); // Selector del modal
+        return this.page.locator('data-test-id=geo-modal-wrapper');
     }
 
     // Methods
-    async enterPostalCode(postalCode: string) {
+    async enterPostalCode(postalCode: string): Promise<void> {
         await this.waitForModalToLoad();
         await this.zipCodeInput.click();
         await this.zipCodeInput.fill(postalCode);
