@@ -48,9 +48,8 @@ Note: Visit https://gorest.co.in/ to get a valid token.
 │           ├── 📄 zipCode.ts                 # Zip code test data
 │       ├── 📁 goRest/                        # Test data for api 
 │           ├── 📄 dataCreateUser.ts          # Test data for createUser.spec.ts 
-│   ├── 📁 utils/                 # General Utilities
-│       ├── 📄 emailGenerator.ts  # Function to generate unique emails
-│
-├── 📄 playwright.config.ts   # Playwright config
-├── 📄 .env                   # Environment  variables
-├── 📄 package.json           # Project dependencies and scripts
+│   ├── 📁 utils/                             # General Utilities
+│       ├── 📄 emailGenerator.ts              # Function to generate unique emails
+├── 📄 playwright.config.ts                   # Playwright config
+├── 📄 .env                                   # Environment  variables
+├── 📄 package.json                           # Project dependencies and scripts
