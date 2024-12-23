@@ -24,8 +24,9 @@ class ProductSelectedPage {
     // Methods
     async addProductToCart() {
         await this.addToCartButton.click();
+        await this.page.locator('div.sc-27bf2d19-0.iGnvSC >> text="Agregaste el producto"').waitFor({ state: 'visible' });
     }
-    
+
 }
 
 export default ProductSelectedPage;

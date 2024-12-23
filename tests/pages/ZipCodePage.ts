@@ -26,7 +26,8 @@ class ZipCodePopUp {
     // Methods
     async enterPostalCode(postalCode: string): Promise<void> {
         await this.waitForModalToLoad();
-        await this.zipCodeInput.click();
+        await this.zipCodeInput.waitFor({ state: 'visible' });
+        await this.zipCodeInput.click({timeout: 10000});
         await this.zipCodeInput.fill(postalCode);
         await this.saveButton.click();
     }

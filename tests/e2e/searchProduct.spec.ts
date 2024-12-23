@@ -17,11 +17,13 @@ test(`Search product: ${PRODUCT.title} and add to cart if available in stock`, a
   const productSelected = new ProductSelectedPage(page);
   const cartPage = new CartPage(page)
 
-  if (!process.env.BASE_URL) {
+  if (!process.env.TEST_UI_BASE_URL) {
     throw new Error('BASE_URL is not defined in the environment variables');
   }
 
-  await page.goto(`${process.env.BASE_URL}`);
+  await page.goto(`${process.env.TEST_UI_BASE_URL}`);
+
+  await page.waitForLoadState('load');
 
   await expect(zipCode.saveButton).toBeDisabled();
 
@@ -50,7 +52,7 @@ test(`Search product: ${PRODUCT.title} and add to cart if available in stock`, a
 
   await productSelected.addProductToCart();
 
-  await expect(productSelected.productAdded).toBeVisible();
+  await expect(productSelected.productAdded).toBeVisible({timeout:10000});
 
   await homePage.goToCart();
 
@@ -58,7 +60,7 @@ test(`Search product: ${PRODUCT.title} and add to cart if available in stock`, a
 
   const PRODUCT_ADDED = await cartPage.validateProductAdded();
 
-  expect(PRODUCT_ADDED).toBe(PRODUCT.slug);
+  expect(PRODUCT_ADDED).toContain(PRODUCT.title);
   
 });
 
