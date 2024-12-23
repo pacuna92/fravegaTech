@@ -4,8 +4,11 @@
   "description": "Challenge QA Automation",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test:headed": "npx playwright test --headed"
+    "test:chrome": "npx playwright test --project=chromium",
+    "test:firefox": "npx playwright test --project=firefox",
+    "test:allBrowsers": "npm run test:chrome && npm run test:firefox",
+    "test:api": "npx playwright test tests/api --project=ApiTests",
+    "test:all": "npm run test:allBrowsers && npm run test:api"
   },
   "keywords": [],
   "author": "",

@@ -37,7 +37,9 @@ class HomePage {
     }
 
     async goToCart(){
-        await this.cartButton.click({timeout: 5000});
+        await this.cartButton.waitFor({ state: 'visible' });
+        await this.cartButton.click();
+        await this.linkGoToCartButton.waitFor({ state: 'visible' })
         await this.linkGoToCartButton.click();
     }
 }
