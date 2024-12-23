@@ -14,9 +14,7 @@ test.describe('GoRest API Testing', () => {
     test('Create new user', async ({ request }) => {
 
         if (!apiToken || !ENDPOINT_URL) {
-
             throw new Error('API token or Base URL is not defined');
-
         }
         const responseBody = await createUser(request, apiToken, ENDPOINT_URL);
 

@@ -14,9 +14,7 @@ test.describe('GoRest API Testing - get list of users', () => {
     test('Get users', async ({ request }) => {
 
         if (!apiToken || !ENDPOINT_URL) {
-
             throw new Error('API token or Base URL is not defined');
-
         }
         const usersList = await getUsers(request, apiToken, ENDPOINT_URL);
 

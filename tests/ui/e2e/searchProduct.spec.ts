@@ -1,12 +1,12 @@
 import { test, expect } from '@playwright/test';
-import ZipCodePopUp from '../pages/ZipCodePage';
-import { PRODUCT, URLS } from '../fixtures/products';
-import { ZIP_CODES } from '../fixtures/zipCode';
-import ProductPage from '../pages/ProductSearchResultPage';
-import HomePage from '../pages/HomePage';
+import ZipCodePopUp from '../../pages/ZipCodePage';
+import { PRODUCT, URLS } from '../../fixtures/fravega/products';
+import { ZIP_CODES } from '../../fixtures/fravega/zipCode';
+import ProductPage from '../../pages/ProductSearchResultPage';
+import HomePage from '../../pages/HomePage';
 import dotenv from 'dotenv';
-import ProductSelectedPage from '../pages/ProductSelectedPage';
-import CartPage from '../pages/CartPage';
+import ProductSelectedPage from '../../pages/ProductSelectedPage';
+import CartPage from '../../pages/CartPage';
 dotenv.config();
 
 test(`Search product: ${PRODUCT.title} and add to cart if available in stock`, async ({ page }) => {
