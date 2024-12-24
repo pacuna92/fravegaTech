@@ -53,3 +53,19 @@ Note: Visit https://gorest.co.in/ to get a valid token.
 ├── 📄 playwright.config.ts                   # Playwright config
 ├── 📄 .env                                   # Environment  variables
 ├── 📄 package.json                           # Project dependencies and scripts
+
+
+## Considerations
+
+Use case 1: Buying is understood as adding the product to the cart.
+
+Use case 2: The use case that we must make sure works correctly is the checkout process.
+- Validate that users can complete the checkout process.
+- Test with different payment methods (credit card, debit card, Mercado Pago, etc.).
+- Verify that different types of delivery can be selected (standard, express, pick up).
+- Verify that errors are properly displayed if payment fails (e.g. card declined).
+- Validate price calculations: total, taxes, discounts, and shipping charges.
+
+ToDo:
+- Add reports (mochawesome or allure).
+- Add jenkinsFile to run tests in a pipeline (CI/CD).
