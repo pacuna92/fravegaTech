@@ -1,0 +1,23 @@
+{
+  "name": "fravegatech",
+  "version": "1.0.0",
+  "description": "Challenge QA Automation",
+  "main": "index.js",
+  "scripts": {
+    "test:ui:chrome": "npx playwright test tests/ui --project=chromium",
+    "test:ui:firefox": "npx playwright test tests/ui --project=firefox",
+    "test:ui:allBrowsers": "npm run test:ui:chrome && npm run test:ui:firefox",
+    "test:api": "npx playwright test tests/api --project=ApiTests",
+    "test:all": "npm run test:ui:allBrowsers && npm run test:api"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
